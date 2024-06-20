@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace FormalLanguagesLibrary.Grammars
 {
-    internal struct Symbol<T>(T? value, SymbolType type) : IEquatable<Symbol<T>>
+    public struct Symbol<T>(T? value, SymbolType type) : IEquatable<Symbol<T>>
     {
+
         public T? Value { get; } = value;
         public SymbolType Type { get; } = type;
 
         // Constant to create an Epsilon symbol
         public static readonly Symbol<T> Epsilon = new Symbol<T>(default, SymbolType.Epsilon);
+
+        private static readonly string EpsilonString = "$";
 
         public override bool Equals(object? obj) => obj is Symbol<T> other && this.Equals(other);
 
@@ -25,6 +28,11 @@ namespace FormalLanguagesLibrary.Grammars
                 return true;
 
             return EqualityComparer<T>.Default.Equals(Value, other.Value);
+        }
+
+        public bool Equals(T other)
+        {
+            return EqualityComparer<T>.Default.Equals(Value, other);
         }
 
         public override int GetHashCode()
@@ -40,7 +48,15 @@ namespace FormalLanguagesLibrary.Grammars
 
         public override string ToString()
         {
-            return Value?.ToString() ?? "";
+            if (!Type.Equals(SymbolType.Epsilon))
+            {
+                return Value?.ToString() ?? "";
+            }
+            else
+            {
+                return EpsilonString;
+            }
+
         }
 
     }
