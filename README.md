@@ -1,2 +1,2 @@
-# auto_and_grammars_library
+# Formal Languages Library for C#
 Automata &amp; Grammars C# Library
