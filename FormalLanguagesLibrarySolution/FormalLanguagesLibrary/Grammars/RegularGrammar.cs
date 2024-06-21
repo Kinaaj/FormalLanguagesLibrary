@@ -15,8 +15,8 @@ namespace FormalLanguagesLibrary.Grammars
 
         public RegularGrammar() : base() { }
         public RegularGrammar(ContextFreeGrammar<T> grammar) : base(grammar) { }
-        public RegularGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? startSymbol, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, startSymbol, productionRules) { }
-        public RegularGrammar(T[] nonTerminals, T[] terminals, T? startSymbol, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, startSymbol, productionRules) { }
+        public RegularGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
+        public RegularGrammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
 
         protected override void _checkFormatOfProductionRule(ProductionRule<T> rule)
         {

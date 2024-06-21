@@ -12,8 +12,8 @@ namespace FormalLanguagesLibrary.Grammars
 
         public RecursivelyEnumerableGrammar() : base() { }
         public RecursivelyEnumerableGrammar(RecursivelyEnumerableGrammar<T> grammar) : base(grammar) { }
-        public RecursivelyEnumerableGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? startSymbol, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, startSymbol, productionRules) { }
-        public RecursivelyEnumerableGrammar(T[] nonTerminals, T[] terminals, T? startSymbol, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, startSymbol, productionRules) { }
+        public RecursivelyEnumerableGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
+        public RecursivelyEnumerableGrammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
 
 
 

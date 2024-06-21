@@ -40,6 +40,7 @@ namespace FormalLanguagesLibrary.Automata
             return Value?.GetHashCode() ?? 0;
         }
 
+
         public static bool operator ==(Symbol<T> symbol1, Symbol<T> symbol2) => symbol1.Equals(symbol2);
         public static bool operator !=(Symbol<T> symbol1, Symbol<T> symbol2) => !(symbol1 == symbol2);
 

@@ -11,12 +11,12 @@ namespace FormalLanguagesLibrary.Grammars
 
         protected HashSet<Symbol<T>> _terminals = new HashSet<Symbol<T>>();
         protected HashSet<Symbol<T>> _nonTerminals = new HashSet<Symbol<T>>();
-        protected Symbol<T>? _startSymbol = null;
+        protected Symbol<T>? _starTSymbolValue = null;
         protected HashSet<ProductionRule<T>> _productionRules = new HashSet<ProductionRule<T>>();
 
         public IReadOnlyCollection<Symbol<T>> Terminals => _terminals;
         public IReadOnlyCollection<Symbol<T>> NonTerminals => _nonTerminals;
-        public Symbol<T>? StartSymbol => _startSymbol;
+        public Symbol<T>? StarTSymbolValue => _starTSymbolValue;
         public IReadOnlyCollection<ProductionRule<T>> ProductionRules => _productionRules;
 
 
@@ -37,7 +37,7 @@ namespace FormalLanguagesLibrary.Grammars
                 _terminals.Add(terminal);
             }
 
-            _startSymbol = grammar.StartSymbol;
+            _starTSymbolValue = grammar.StarTSymbolValue;
 
             foreach(var rule in grammar.ProductionRules)
             {
@@ -47,7 +47,7 @@ namespace FormalLanguagesLibrary.Grammars
             _checkInvariants();
         }
 
-        public Grammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? startSymbol, IEnumerable<ProductionRule<T>> productionRules)
+        public Grammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules)
         {
             foreach (var nonTerminal in nonTerminals)
             {
@@ -57,7 +57,7 @@ namespace FormalLanguagesLibrary.Grammars
             {
                 _terminals.Add(terminal);
             }
-            _startSymbol = startSymbol;
+            _starTSymbolValue = starTSymbolValue;
 
             foreach(var rule in productionRules)
             {
@@ -68,7 +68,7 @@ namespace FormalLanguagesLibrary.Grammars
         }
 
         // Constructor for easier creating of a Grammar
-        public Grammar(T[] nonTerminals, T[] terminals, T? startSymbol, Tuple<T[], T[]>[] productionRules)
+        public Grammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules)
         {
             foreach(T symbol in  nonTerminals)
             {
@@ -80,7 +80,7 @@ namespace FormalLanguagesLibrary.Grammars
                 _terminals.Add(new Symbol<T>(symbol, SymbolType.Terminal));
             }
 
-            _startSymbol = new Symbol<T>(startSymbol, SymbolType.NonTerminal);
+            _starTSymbolValue = new Symbol<T>(starTSymbolValue, SymbolType.NonTerminal);
 
             foreach (var rule in productionRules)
             {
@@ -138,7 +138,7 @@ namespace FormalLanguagesLibrary.Grammars
         private void _checkInvariants()
         {
             _checkNonTerminals();
-            _checkStartSymbol();
+            _checkStarTSymbolValue();
             _checkTerminals();
             _checkTerminalsAndNonTerminals();
 
@@ -185,18 +185,18 @@ namespace FormalLanguagesLibrary.Grammars
             }
         }
 
-        private void _checkStartSymbol()
+        private void _checkStarTSymbolValue()
         {
 
-            if (_startSymbol is null)
+            if (_starTSymbolValue is null)
             {
                 return;
             }
-            if (_startSymbol?.Type != SymbolType.NonTerminal)
+            if (_starTSymbolValue?.Type != SymbolType.NonTerminal)
             {
-                throw new GrammarException($"Invalid symbol type '{_startSymbol?.Type}' for the start symbol. Expected 'NonTerminal'.");
+                throw new GrammarException($"Invalid symbol type '{_starTSymbolValue?.Type}' for the start symbol. Expected 'NonTerminal'.");
             }
-            if(!_nonTerminals.Contains((Symbol<T>)_startSymbol))
+            if(!_nonTerminals.Contains((Symbol<T>)_starTSymbolValue))
             {
                 throw new GrammarException($"Start symbol must be included in non-terminals of the grammar.");
             }

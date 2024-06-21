@@ -6,17 +6,27 @@ using System.Threading.Tasks;
 
 namespace FormalLanguagesLibrary.Automata
 {
-    internal class NonDeterministicFiniteAutomaton<TSymbol,TState> : FiniteStateAutomaton<TSymbol, TState>
+    public class NonDeterministicFiniteAutomaton<TSymbolValue,TStateValue> : FiniteStateAutomaton<TSymbolValue, TStateValue>
     {
         
-        public NonDeterministicFiniteAutomaton(NonDeterministicFiniteAutomaton<TSymbol,TState> other) : base(other) { }
+        public NonDeterministicFiniteAutomaton(NonDeterministicFiniteAutomaton<TSymbolValue, TStateValue> other) : base(other) { }
 
-        public NonDeterministicFiniteAutomaton(HashSet<TSymbol> inputAlphabet, HashSet<TState> states, TState initialState, TransitionFunction<TState, TSymbol> transitionFunction) : base(inputAlphabet, states, initialState, transitionFunction) { }
+        public NonDeterministicFiniteAutomaton(HashSet<Symbol<TSymbolValue>> inputAlphabet, HashSet<State<TStateValue>> states, State<TStateValue> initialState, TransitionFunction<TStateValue, TSymbolValue> transitionFunction, HashSet<State<TStateValue>> finalStates) : base(inputAlphabet, states, initialState, transitionFunction, finalStates) { }
+
+        public NonDeterministicFiniteAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues, TStateValue initialStateValue, TransitionFunction<TStateValue, TSymbolValue> transitionFunction, IEnumerable<TStateValue> finalStatesValues) : base(inputAlphabetValues, statesValues, initialStateValue, transitionFunction, finalStatesValues)
+        {
+
+        }
 
 
         protected override void _checkInvariants()
         {
-            throw new NotImplementedException();
+            base._checkInvariants();
+            //It cannot include any epsilon transitions
+            if (_transitionFunction.HasEpsilonTransitions())
+            {
+                throw new FiniteAutomatonException("In a DFA, there cannot be epsilon transitions");
+            }
         }
     }
 }

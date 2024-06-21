@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FormalLanguagesLibrary.Automata
 {
-    public abstract class Automaton
+    //TODO:
+    public class NonDeterministicEpsilonFiniteAutomaton
     {
     }
 }

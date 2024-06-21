@@ -10,15 +10,15 @@ namespace FormalLanguagesLibrary.Grammars
     public class ContextSensitiveGrammar<T> : RecursivelyEnumerableGrammar<T>
     {
 
-        private bool _isStartSymbolOnRightSide = false;
+        private bool _isStarTSymbolValueOnRightSide = false;
         private bool _isStartingSymbolGeneratingEpsilon = false;
 
 
 
         public ContextSensitiveGrammar() : base() { }
         public ContextSensitiveGrammar(ContextSensitiveGrammar<T> grammar) : base(grammar) { }
-        public ContextSensitiveGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? startSymbol, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, startSymbol, productionRules) { }
-        public ContextSensitiveGrammar(T[] nonTerminals, T[] terminals, T? startSymbol, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, startSymbol, productionRules) { }
+        public ContextSensitiveGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
+        public ContextSensitiveGrammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
 
 
 
@@ -37,14 +37,14 @@ namespace FormalLanguagesLibrary.Grammars
             // Check if S is on the right side
             foreach (Symbol<T> symbol in rule.RightHandSide)
             {
-                if (symbol == _startSymbol)
+                if (symbol == _starTSymbolValue)
                 {
-                    _isStartSymbolOnRightSide = true;
+                    _isStarTSymbolValueOnRightSide = true;
                 }
             }
 
             // Check if S is generating epsilon
-            if (rule.LeftHandSide[0] == _startSymbol && rule.IsEpsilonRule())
+            if (rule.LeftHandSide[0] == _starTSymbolValue && rule.IsEpsilonRule())
             {
                 _isStartingSymbolGeneratingEpsilon = true;
             }
@@ -57,7 +57,7 @@ namespace FormalLanguagesLibrary.Grammars
             }
 
             // Ensure that S -> ε and S does not appear on the right side of any rule simoutaniously
-            if (_isStartingSymbolGeneratingEpsilon && _isStartSymbolOnRightSide)
+            if (_isStartingSymbolGeneratingEpsilon && _isStarTSymbolValueOnRightSide)
             {
                 throw new ContextSensitiveGrammarException($"The start symbol S cannot appear on the right-hand side of any rule if S -> ε for production rule: {rule}");
             }

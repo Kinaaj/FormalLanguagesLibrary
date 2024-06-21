@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\finitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\finitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\nondeterministicfiniteautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\nondeterministicfiniteautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}|FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibraryexamples\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}|FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj|solutionrelative:formallanguageslibraryexamples\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\symbol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +15,44 @@
       "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\deterministicfinitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\deterministicfinitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\finitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\finitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\nondeterministicepsilonfiniteautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\nondeterministicepsilonfiniteautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\transitionfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\transitionfunction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\deterministicfinitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\deterministicfinitestateautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\automaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\automaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\nondeterministicfiniteautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\nondeterministicfiniteautomaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\contextfreegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\contextfreegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\productionrule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\productionrule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\contextsensitivegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\contextsensitivegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\recursivelyenumerablegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\recursivelyenumerablegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\symbol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,28 +63,8 @@
       "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\grammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\automata\\automaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\automata\\automaton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\contextfreegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\contextfreegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\contextsensitivegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\contextsensitivegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\regulargrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\regulargrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibrary\\grammars\\recursivelyenumerablegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{399E47BC-FBE7-4782-AD00-7E969C65EE30}|FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj|solutionrelative:formallanguageslibrary\\grammars\\recursivelyenumerablegrammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}|FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibraryexamples\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}|FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj|solutionrelative:formallanguageslibraryexamples\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}|FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj|c:\\users\\programming\\documents\\csharp\\auto_and_grammars_library\\formallanguageslibrarysolution\\formallanguageslibraryexamples\\formallanguageslibraryexamples.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -78,19 +82,119 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "State.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\State.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\State.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\State.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\State.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:17:03.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FiniteStateAutomaton.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAwwDEAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T10:36:03.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ContextFreeGrammar.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T22:36:52.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\Program.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibraryExamples\\Program.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\Program.cs",
+              "RelativeToolTip": "FormalLanguagesLibraryExamples\\Program.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T08:15:28.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeterministicFiniteStateAutomaton.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAByAQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T12:15:49.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NonDeterministicEpsilonFiniteAutomaton.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\NonDeterministicEpsilonFiniteAutomaton.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\NonDeterministicEpsilonFiniteAutomaton.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\NonDeterministicEpsilonFiniteAutomaton.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\NonDeterministicEpsilonFiniteAutomaton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T22:59:04.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "NonDeterministicFiniteAutomaton.cs",
               "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\NonDeterministicFiniteAutomaton.cs",
               "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\NonDeterministicFiniteAutomaton.cs",
               "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\NonDeterministicFiniteAutomaton.cs",
               "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\NonDeterministicFiniteAutomaton.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAAA0AAAD3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAB1AQAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T13:53:14.227Z",
+              "WhenOpened": "2024-06-20T13:53:14.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Automaton.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Automaton.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\Automaton.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Automaton.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\Automaton.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T08:04:38.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Symbol.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Symbol.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\Symbol.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Symbol.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\Symbol.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAIwCkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T11:16:57.948Z",
               "EditorCaption": ""
             },
             {
@@ -101,75 +205,22 @@
               "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\TransitionFunction.cs",
               "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\TransitionFunction.cs",
               "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\TransitionFunction.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBEAAAAJAAAA",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAUwJMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-20T13:35:15.623Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DeterministicFiniteStateAutomaton.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\DeterministicFiniteStateAutomaton.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T12:15:49.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "State.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\State.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\State.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\State.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\State.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T11:17:03.742Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Symbol.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Symbol.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\Symbol.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Symbol.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\Symbol.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T11:16:57.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FiniteStateAutomaton.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\FiniteStateAutomaton.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T10:36:03.369Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "ContextFreeGrammar.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\ContextFreeGrammar.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAASAAAA",
+              "Title": "ProductionRule.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAmwHsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T22:36:52.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T09:11:02.397Z"
             },
             {
               "$type": "Document",
@@ -181,64 +232,11 @@
               "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\ContextSensitiveGrammar.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAHEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T22:09:49.026Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Symbol.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\Symbol.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\Symbol.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\Symbol.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\Symbol.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T08:10:45.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductionRule.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\ProductionRule.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAmwHsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T09:11:02.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T22:09:49.026Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "RegularGrammar.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T09:20:21.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\Program.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibraryExamples\\Program.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\Program.cs",
-              "RelativeToolTip": "FormalLanguagesLibraryExamples\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBcAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-20T08:15:28.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "RecursivelyEnumerableGrammar.cs",
               "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\RecursivelyEnumerableGrammar.cs",
               "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\RecursivelyEnumerableGrammar.cs",
@@ -246,12 +244,35 @@
               "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\RecursivelyEnumerableGrammar.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T22:07:59.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T22:07:59.107Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
+              "Title": "Symbol.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\Symbol.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\Symbol.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\Symbol.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\Symbol.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T08:10:45.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RegularGrammar.cs",
+              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
+              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
+              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
+              "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\RegularGrammar.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T09:20:21.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Grammar.cs",
               "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Grammars\\Grammar.cs",
               "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Grammars\\Grammar.cs",
@@ -259,37 +280,22 @@
               "RelativeToolTip": "FormalLanguagesLibrary\\Grammars\\Grammar.cs",
               "ViewState": "AQIAAHwAAAAAAAAAAAAAwIoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T08:09:49.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T08:09:49.005Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Automaton.cs",
-              "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Automaton.cs",
-              "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Automata\\Automaton.cs",
-              "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Automata\\Automaton.cs",
-              "RelativeToolTip": "FormalLanguagesLibrary\\Automata\\Automaton.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T08:04:38.78Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "FormalLanguagesLibraryExamples",
               "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj",
               "RelativeDocumentMoniker": "FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj",
               "ToolTip": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj",
               "RelativeToolTip": "FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-20T08:37:39.018Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-20T08:37:39.018Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\Class1.cs",
               "RelativeDocumentMoniker": "FormalLanguagesLibrary\\Class1.cs",
@@ -297,8 +303,7 @@
               "RelativeToolTip": "FormalLanguagesLibrary\\Class1.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T08:01:16.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-19T08:01:16.004Z"
             }
           ]
         }
