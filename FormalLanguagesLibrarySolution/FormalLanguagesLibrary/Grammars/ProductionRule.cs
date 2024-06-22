@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
+﻿using System.Numerics;
 using System.Text;
-using System.Threading.Tasks;
+
 
 
 
@@ -12,7 +9,7 @@ namespace FormalLanguagesLibrary.Grammars
 {
 
 
-    public record class ProductionRule<T>
+    public record class ProductionRule<T> where T : IComparable<T>, IIncrementOperators<T>
     {
         static readonly string ProductionRuleStringSeparator = "->";
 

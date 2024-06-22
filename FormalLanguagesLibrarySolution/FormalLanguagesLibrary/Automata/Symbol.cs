@@ -1,9 +1,4 @@
-﻿using FormalLanguagesLibrary.Grammars;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace FormalLanguagesLibrary.Automata
 {
@@ -23,6 +18,8 @@ namespace FormalLanguagesLibrary.Automata
             // For epsilons it doesn't depend on the value of the symbol
             if (Type == SymbolType.Epsilon && other.Type == SymbolType.Epsilon)
                 return true;
+            // If one of the Symbols are epsilon then don't equal them with other symbols
+            else if(Type == SymbolType.Epsilon || other.Type == SymbolType.Epsilon) return false;
 
             return EqualityComparer<T>.Default.Equals(Value, other.Value);
         }
@@ -42,6 +39,7 @@ namespace FormalLanguagesLibrary.Automata
 
 
         public static bool operator ==(Symbol<T> symbol1, Symbol<T> symbol2) => symbol1.Equals(symbol2);
+
         public static bool operator !=(Symbol<T> symbol1, Symbol<T> symbol2) => !(symbol1 == symbol2);
 
         public override string ToString()

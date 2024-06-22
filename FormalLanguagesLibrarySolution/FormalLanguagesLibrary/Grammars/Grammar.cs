@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
+
 
 namespace FormalLanguagesLibrary.Grammars
 {
-    public abstract class Grammar<T>
+    public abstract class Grammar<T> where T : IComparable<T>, IIncrementOperators<T>
     {
 
         protected HashSet<Symbol<T>> _terminals = new HashSet<Symbol<T>>();
         protected HashSet<Symbol<T>> _nonTerminals = new HashSet<Symbol<T>>();
-        protected Symbol<T>? _starTSymbolValue = null;
+        protected Symbol<T>? _startSymbol = null;
         protected HashSet<ProductionRule<T>> _productionRules = new HashSet<ProductionRule<T>>();
 
         public IReadOnlyCollection<Symbol<T>> Terminals => _terminals;
         public IReadOnlyCollection<Symbol<T>> NonTerminals => _nonTerminals;
-        public Symbol<T>? StarTSymbolValue => _starTSymbolValue;
+        public Symbol<T>? StartSymbol => _startSymbol;
         public IReadOnlyCollection<ProductionRule<T>> ProductionRules => _productionRules;
-
 
         public Grammar()
         {
@@ -37,7 +33,7 @@ namespace FormalLanguagesLibrary.Grammars
                 _terminals.Add(terminal);
             }
 
-            _starTSymbolValue = grammar.StarTSymbolValue;
+            _startSymbol = grammar.StartSymbol;
 
             foreach(var rule in grammar.ProductionRules)
             {
@@ -57,7 +53,7 @@ namespace FormalLanguagesLibrary.Grammars
             {
                 _terminals.Add(terminal);
             }
-            _starTSymbolValue = starTSymbolValue;
+            _startSymbol = starTSymbolValue;
 
             foreach(var rule in productionRules)
             {
@@ -68,7 +64,7 @@ namespace FormalLanguagesLibrary.Grammars
         }
 
         // Constructor for easier creating of a Grammar
-        public Grammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules)
+        public Grammar(T[] nonTerminals, T[] terminals, T? startTSymbolValue, Tuple<T[], T[]>[] productionRules)
         {
             foreach(T symbol in  nonTerminals)
             {
@@ -80,7 +76,15 @@ namespace FormalLanguagesLibrary.Grammars
                 _terminals.Add(new Symbol<T>(symbol, SymbolType.Terminal));
             }
 
-            _starTSymbolValue = new Symbol<T>(starTSymbolValue, SymbolType.NonTerminal);
+
+            if(startTSymbolValue is null)
+            {
+                _startSymbol = null;
+            }
+            else
+            {
+                _startSymbol = new Symbol<T>(startTSymbolValue, SymbolType.NonTerminal);
+            }
 
             foreach (var rule in productionRules)
             {
@@ -127,7 +131,6 @@ namespace FormalLanguagesLibrary.Grammars
                     }
 
                 }
-
 
                 _productionRules.Add(new ProductionRule<T>(leftHandSide, rightHandSide));
             }
@@ -188,15 +191,15 @@ namespace FormalLanguagesLibrary.Grammars
         private void _checkStarTSymbolValue()
         {
 
-            if (_starTSymbolValue is null)
+            if (_startSymbol is null)
             {
                 return;
             }
-            if (_starTSymbolValue?.Type != SymbolType.NonTerminal)
+            if (_startSymbol?.Type != SymbolType.NonTerminal)
             {
-                throw new GrammarException($"Invalid symbol type '{_starTSymbolValue?.Type}' for the start symbol. Expected 'NonTerminal'.");
+                throw new GrammarException($"Invalid symbol type '{_startSymbol?.Type}' for the start symbol. Expected 'NonTerminal'.");
             }
-            if(!_nonTerminals.Contains((Symbol<T>)_starTSymbolValue))
+            if(!_nonTerminals.Contains((Symbol<T>)_startSymbol))
             {
                 throw new GrammarException($"Start symbol must be included in non-terminals of the grammar.");
             }
@@ -226,11 +229,13 @@ namespace FormalLanguagesLibrary.Grammars
         {
             foreach(var symbol in rule.LeftHandSide)
             {
-                if(!_nonTerminals.Contains(symbol) && !_terminals.Contains(symbol))
+
+                if (!_nonTerminals.Contains(symbol) && !_terminals.Contains(symbol))
                 {
                     throw new GrammarException($"Symbol {symbol} is not defined in terminals and either in non-terminals.");
                 }
             }
+
 
             foreach (var symbol in rule.RightHandSide)
             {

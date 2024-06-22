@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace FormalLanguagesLibrary.Grammars
 {
-    public class RegularGrammar<T> : ContextFreeGrammar<T>
+    public class RegularGrammar<T> : ContextFreeGrammar<T> where T : IComparable<T>, IIncrementOperators<T>
     {
         //Else is leftRegular
         public bool isRightRegular { get; private set; }

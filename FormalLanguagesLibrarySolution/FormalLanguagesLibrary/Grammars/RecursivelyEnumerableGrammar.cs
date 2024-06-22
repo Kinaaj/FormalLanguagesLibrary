@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
+
 
 
 namespace FormalLanguagesLibrary.Grammars
 {
-    public class RecursivelyEnumerableGrammar<T> : Grammar<T>
+    public class RecursivelyEnumerableGrammar<T> : Grammar<T> where T : IComparable<T>, IIncrementOperators<T>
     {
 
         public RecursivelyEnumerableGrammar() : base() { }

@@ -1,16 +1,11 @@
-﻿using FormalLanguagesLibrary.Grammars;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
+﻿using System;
 using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
+
 
 namespace FormalLanguagesLibrary.Automata
 {
 
-    public class TransitionFunction<TStateValue, TSymbolValue>
+    public class TransitionFunction<TSymbolValue, TStateValue>
     {
 
         private Dictionary<Tuple<State<TStateValue>, Symbol<TSymbolValue>>, HashSet<State<TStateValue>>> _transitions = new();
@@ -26,7 +21,7 @@ namespace FormalLanguagesLibrary.Automata
             _transitions = transitions;
         }
 
-        public TransitionFunction(TransitionFunction<TStateValue, TSymbolValue> transitionFunction)
+        public TransitionFunction(TransitionFunction<TSymbolValue, TStateValue> transitionFunction)
         {
             _transitions = new(transitionFunction.Transitions);
         }
@@ -59,6 +54,11 @@ namespace FormalLanguagesLibrary.Automata
         {
 
             return AddTransition(new Tuple<State<TStateValue>, Symbol<TSymbolValue>>(inputState, inputSymbol), outputState);
+        }
+
+        public bool AddTransition(State<TStateValue> inputState, Symbol<TSymbolValue> inputSymbol, HashSet<State<TStateValue>> outputStates)
+        {
+            return AddTransitions(new Tuple<State<TStateValue>, Symbol<TSymbolValue>>(inputState, inputSymbol), outputStates);
         }
 
         public bool AddTransitions(Tuple<State<TStateValue>, Symbol<TSymbolValue>> input, HashSet<State<TStateValue>> states)
@@ -117,6 +117,27 @@ namespace FormalLanguagesLibrary.Automata
             return _transitions.Remove(newInput);
         }
 
+        public bool RemoveTransition(State<TStateValue> state)
+        {
+            bool removed = false;
+
+            foreach(var ((inputState,inputSymbol),_) in _transitions)
+            {
+                if(inputState == state)
+                {
+                    _transitions.Remove(new(inputState, inputSymbol));
+                    removed = true;
+                }
+            }
+
+            return removed;
+        }
+
+        public bool RemoveTransition(State<TStateValue> state,Symbol<TSymbolValue> symbol)
+        {
+            return _transitions.Remove(new(state, symbol));
+        }
+
 
         public bool HasEpsilonTransitions()
         {
@@ -129,6 +150,12 @@ namespace FormalLanguagesLibrary.Automata
                 }
             }
             return false;
+        }
+
+
+        public bool Contains(State<TStateValue> inputState, Symbol<TSymbolValue> inputSymbol)
+        {
+            return Contains(new(inputState,inputSymbol));
         }
 
         public bool Contains(Tuple<State<TStateValue>, Symbol<TSymbolValue>> inputPair)
@@ -152,7 +179,53 @@ namespace FormalLanguagesLibrary.Automata
             return sb.ToString();
         }
 
+        public HashSet<State<TStateValue>> this[State<TStateValue> inputState, Symbol<TSymbolValue> inputSymbol]
+        {
+            get
+            {
+               return GetTransition(inputState, inputSymbol);
+            }
+        }
+
+        public HashSet<State<TStateValue>> GetTransition(State<TStateValue> inputState, Symbol<TSymbolValue> inputSymbol)
+        {
+            var key = Tuple.Create(inputState, inputSymbol);
+            return _transitions.ContainsKey(key) ? _transitions[key] : new HashSet<State<TStateValue>>();
+        }
+
         public HashSet<State<TStateValue>> GetClosure(State<TStateValue> currentState, Symbol<TSymbolValue> transitionSymbol)
+        {
+            HashSet<State<TStateValue>> closure = new();
+            // Check transitions from currentState with the specific transitionSymbol
+            foreach (var transition in _transitions)
+            {
+                var inputState = transition.Key.Item1;
+                var inputSymbol = transition.Key.Item2;
+                var outputStates = transition.Value;
+
+                if (inputState == currentState && inputSymbol == transitionSymbol)
+                {
+                   closure.UnionWith(outputStates);
+                }
+            }
+
+            HashSet<State<TStateValue>> finalClosure = GetEpsilonClosure(closure);
+
+            return finalClosure;
+        }
+
+        public HashSet<State<TStateValue>> GetClosure(HashSet<State<TStateValue>> currentStates, Symbol<TSymbolValue> transitionSymbol)
+        {
+            HashSet<State<TStateValue>> finalClosure = new();
+            foreach(var currentState in currentStates)
+            {
+                finalClosure.UnionWith(GetClosure(currentState, transitionSymbol));
+            }
+
+            return finalClosure;
+        }
+
+        public HashSet<State<TStateValue>> GetEpsilonClosure(State<TStateValue> currentState)
         {
             HashSet<State<TStateValue>> closure = new();
             Queue<State<TStateValue>> queue = new();
@@ -166,14 +239,14 @@ namespace FormalLanguagesLibrary.Automata
             {
                 var state = queue.Dequeue();
 
-                // Check epsilon transitions from currentState with the specific transitionSymbol
+                // Check epsilon transitions from state
                 foreach (var transition in _transitions)
                 {
                     var inputState = transition.Key.Item1;
                     var inputSymbol = transition.Key.Item2;
                     var outputStates = transition.Value;
 
-                    if (inputState.Equals(state) && (inputSymbol.Equals(transitionSymbol) || inputSymbol.Type.Equals(SymbolType.Epsilon)))
+                    if (inputState == state && inputSymbol.Type == SymbolType.Epsilon)
                     {
                         foreach (var nextState in outputStates)
                         {
@@ -191,16 +264,19 @@ namespace FormalLanguagesLibrary.Automata
             return closure;
         }
 
-        public HashSet<State<TStateValue>> GetClosure(HashSet<State<TStateValue>> currentStates, Symbol<TSymbolValue> transitionSymbol)
+
+
+        public HashSet<State<TStateValue>> GetEpsilonClosure(HashSet<State<TStateValue>> currentStates)
         {
             HashSet<State<TStateValue>> finalClosure = new();
             foreach(var currentState in currentStates)
             {
-                finalClosure.UnionWith(GetClosure(currentState, transitionSymbol));
+                finalClosure.UnionWith(GetEpsilonClosure(currentState));
             }
-
             return finalClosure;
         }
+
+
 
 
     }

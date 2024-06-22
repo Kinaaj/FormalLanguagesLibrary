@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
+
 
 
 namespace FormalLanguagesLibrary.Grammars
 {
-    public class ContextSensitiveGrammar<T> : RecursivelyEnumerableGrammar<T>
+    public class ContextSensitiveGrammar<T> : RecursivelyEnumerableGrammar<T> where T : IComparable<T>, IIncrementOperators<T>
     {
 
         private bool _isStarTSymbolValueOnRightSide = false;
@@ -37,14 +34,14 @@ namespace FormalLanguagesLibrary.Grammars
             // Check if S is on the right side
             foreach (Symbol<T> symbol in rule.RightHandSide)
             {
-                if (symbol == _starTSymbolValue)
+                if (symbol == _startSymbol)
                 {
                     _isStarTSymbolValueOnRightSide = true;
                 }
             }
 
             // Check if S is generating epsilon
-            if (rule.LeftHandSide[0] == _starTSymbolValue && rule.IsEpsilonRule())
+            if (rule.LeftHandSide[0] == _startSymbol && rule.IsEpsilonRule())
             {
                 _isStartingSymbolGeneratingEpsilon = true;
             }

@@ -1,9 +1,7 @@
-﻿using FormalLanguagesLibrary.Grammars;
+﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FormalLanguagesLibrary.Automata
 {
@@ -14,20 +12,20 @@ namespace FormalLanguagesLibrary.Automata
         protected HashSet<Symbol<TSymbolValue>> _inputAlphabet = new();
         protected HashSet<State<TStateValue>> _states = new();
         protected State<TStateValue> _initialState;
-        protected TransitionFunction<TStateValue, TSymbolValue> _transitionFunction;
+        protected TransitionFunction<TSymbolValue, TStateValue> _transitionFunction;
         protected HashSet<State<TStateValue>> _finalStates = new();
 
 
         public IReadOnlyCollection<Symbol<TSymbolValue>> InputAlphabet => _inputAlphabet;
         public IReadOnlyCollection<State<TStateValue>> States => _states;
         public State<TStateValue> InitialState => _initialState;
-        public TransitionFunction<TStateValue, TSymbolValue> TransitionFunction => _transitionFunction;
+        public TransitionFunction<TSymbolValue, TStateValue> TransitionFunction => _transitionFunction;
         public IReadOnlyCollection<State<TStateValue>> FinalStates => _finalStates;
 
 
 
 
-        public FiniteStateAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues, TStateValue initialStateValue, TransitionFunction<TStateValue, TSymbolValue> transitionFunction, IEnumerable<TStateValue> finalStatesValues)
+        public FiniteStateAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues, TStateValue initialStateValue, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, IEnumerable<TStateValue> finalStatesValues)
         {
             foreach(TSymbolValue symbolValue in inputAlphabetValues)
             {
@@ -53,7 +51,7 @@ namespace FormalLanguagesLibrary.Automata
             _checkInvariants();
         }
 
-        public FiniteStateAutomaton(HashSet<Symbol<TSymbolValue>> inputAlphabet, HashSet<State<TStateValue>> states, State<TStateValue> initialState, TransitionFunction<TStateValue, TSymbolValue> transitionFunction, HashSet<State<TStateValue>> finalStates)
+        public FiniteStateAutomaton(HashSet<Symbol<TSymbolValue>> inputAlphabet, HashSet<State<TStateValue>> states, State<TStateValue> initialState, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, HashSet<State<TStateValue>> finalStates)
         {
             _inputAlphabet = inputAlphabet;
             _states = states;
@@ -86,12 +84,9 @@ namespace FormalLanguagesLibrary.Automata
                     throw new FiniteAutomatonException($"Symbol {symbol} in the input sequence {symbols.ToString()} is not included in the input alphabet.");
                 }
 
-                HashSet<State<TStateValue>> newReachedStates = new();
-                foreach(var state in reachedStates)
-                {
-                    var closure = _transitionFunction.GetClosure(state, symbol);
-                    newReachedStates.UnionWith(closure);
-                }
+                HashSet<State<TStateValue>> newReachedStates = _transitionFunction.GetClosure(reachedStates, symbol);
+
+
                 reachedStates = newReachedStates;
                 newReachedStates = new();
             }
@@ -147,6 +142,9 @@ namespace FormalLanguagesLibrary.Automata
         }
 
 
+        public abstract DeterministicFiniteAutomaton<TSymbolValue, TStateValue> ToDFA();
+
+
         protected virtual void _checkInvariants()
         {
             // Check if the initial state is in the set of states
@@ -195,7 +193,58 @@ namespace FormalLanguagesLibrary.Automata
 
         }
 
+        public HashSet<State<TStateValue>> GetReachableStates()
+        {
+            var reachable = new HashSet<State<TStateValue>>();
+            var toProcess = new Queue<State<TStateValue>>();
+            toProcess.Enqueue(_initialState);
+
+            while (toProcess.Count > 0)
+            {
+                var state = toProcess.Dequeue();
+                if (!reachable.Contains(state))
+                {
+                    reachable.Add(state);
+
+
+                    foreach(var symbol in _inputAlphabet)
+                    {
+                        var newReachableStates = _transitionFunction.GetClosure(state, symbol);
+                        foreach (var newState in newReachableStates)
+                        {
+                            var epsilonClosureOfNewState = _transitionFunction.GetEpsilonClosure(newState);
+                            foreach (var reachableState in epsilonClosureOfNewState)
+                            {
+                                toProcess.Enqueue(reachableState);
+                            }
+                        }
+
+                    }
+
+
+                }
+            }
+
+            return reachable;
+        }
+
+        public void RemoveUnreachableStates()
+        {
+            //Remove unreachable states
+            var reachableStates = GetReachableStates();
+            var unreachableStates = _states.Except(reachableStates);
+            _states.IntersectWith(reachableStates);
+            _finalStates.IntersectWith(reachableStates);
+
+            foreach (var unreachableState in unreachableStates)
+            {
+                _transitionFunction.RemoveTransition(unreachableState);
+            }
+        }
+
+
     }
+
 
 
     public class FiniteAutomatonException : Exception

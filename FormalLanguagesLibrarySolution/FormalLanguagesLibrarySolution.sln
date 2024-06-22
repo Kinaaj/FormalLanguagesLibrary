@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormalLanguagesLibrary", "FormalLanguagesLibrary\FormalLanguagesLibrary.csproj", "{399E47BC-FBE7-4782-AD00-7E969C65EE30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormalLanguagesLibraryExamples", "FormalLanguagesLibraryExamples\FormalLanguagesLibraryExamples.csproj", "{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormalLanguagesLibraryExamples", "FormalLanguagesLibraryExamples\FormalLanguagesLibraryExamples.csproj", "{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormalLanguageLibraryTests", "FormalLanguageLibraryTests\FormalLanguageLibraryTests.csproj", "{3DD27CCE-6818-4152-9010-AD0E7C5065F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D95340E-05A2-4CD4-B0D0-427E32AAEC29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD27CCE-6818-4152-9010-AD0E7C5065F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD27CCE-6818-4152-9010-AD0E7C5065F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD27CCE-6818-4152-9010-AD0E7C5065F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD27CCE-6818-4152-9010-AD0E7C5065F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
