@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Numerics;
 using System.Text;
-using System.Threading.Tasks;
+
+
 
 
 
 namespace FormalLanguagesLibrary.Grammars
 {
 
-    //TODO: ToString()
-    //TODO: Class?
-    internal readonly record struct ProductionRule<T>
+
+    public record class ProductionRule<T> where T : IComparable<T>, IIncrementOperators<T>
     {
-        public Symbol<T>[] LeftHandSide { get;  }
-        public Symbol<T>[] RightHandSide { get;  }
+        static readonly string ProductionRuleStringSeparator = "->";
+
+        public Symbol<T>[] LeftHandSide { get; }
+        public Symbol<T>[] RightHandSide { get; }
 
 
-        //TODO: How to convert IEnumerable to array?
-        public ProductionRule(IEnumerable<T> leftHandSide, IEnumerable<T>[] rightHandSide )
+        public ProductionRule(IEnumerable<Symbol<T>> leftHandSide, IEnumerable<Symbol<T>> rightHandSide)
         {
-            LeftHandSide = leftHandSide;
-            RightHandSide = rightHandSide;
+            LeftHandSide = leftHandSide.ToArray();
+            RightHandSide = rightHandSide.ToArray();
+
+            _checkInvariants();
         }
 
         public bool IsEpsilonRule()
@@ -46,12 +47,71 @@ namespace FormalLanguagesLibrary.Grammars
         {
             if (LeftHandSide.Length == 0)
             {
-                throw new ProductionRuleException("Left-hand side cannot be empty.");
+                throw new ProductionRuleException($"Left-hand side cannot be empty for production rule: {ToString()}");
             }
-            if(RightHandSide.Length == 0)
+            if (RightHandSide.Length == 0)
             {
-                throw new ProductionRuleException("Right-hand side cannot be empty.");
+                throw new ProductionRuleException($"Right-hand side cannot be empty for production rule: {ToString()}");
             }
+            
+            // Left-hand side must include a non-terminal & cannot include an epsilon
+            {
+                bool nonTerminalIncluded = false;
+
+                foreach (Symbol<T> symbol in LeftHandSide)
+                {
+                    if(symbol.Type == SymbolType.NonTerminal)
+                    {
+                        nonTerminalIncluded = true;
+                    }
+                    else if(symbol.Type == SymbolType.Epsilon)
+                    {
+                        throw new ProductionRuleException($"Left-hand side cannot include an epsilon for production rule: {ToString()}");
+                    }
+                }
+
+                if(!nonTerminalIncluded)
+                {
+                    throw new ProductionRuleException($"Left-hand side must include a non-terminal symbol for production rule: {ToString()}");
+                }
+            }
+
+            // Right-hand side cannot include an epsilon and other symbols at the same time
+
+            {
+                bool epsilonIncluded = false;
+                
+                foreach (Symbol<T> symbol in RightHandSide)
+                {
+                    if (symbol.Type == SymbolType.Epsilon)
+                    {
+                        epsilonIncluded = true;
+                    }
+                }
+
+                if (RightHandSide.Length != 1 && epsilonIncluded)
+                {
+                    throw new ProductionRuleException($"Right-hand side cannot include Epsilon symbol and other symbols for production rule: {ToString()}");
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach(var symbol in LeftHandSide)
+            {
+                sb.Append(symbol.ToString());
+            }
+            sb.Append(ProductionRuleStringSeparator);
+
+            foreach(var symbol in RightHandSide)
+            {
+                sb.Append(symbol.ToString());
+            }
+
+            return sb.ToString();
         }
 
     }
