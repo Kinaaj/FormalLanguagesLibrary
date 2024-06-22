@@ -25,7 +25,6 @@ Gramatiky zde budou zahrnuty všech levelů v Chomského hierarchii. Budou obsah
 
 Knihovna bude umět převádět mezi gramatikami a automaty, například:
 - regulární gramatiku na DFA
-- opačný převod
 
 ## Výstup
 
