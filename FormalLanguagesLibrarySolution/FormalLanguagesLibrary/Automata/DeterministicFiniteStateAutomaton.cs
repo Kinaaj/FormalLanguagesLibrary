@@ -27,21 +27,21 @@ namespace FormalLanguagesLibrary.Automata
                 // For DFA, outputStates should contain exactly one state
                 if (outputStates.Count != 1)
                 {
-                    throw new FiniteAutomatonException("In a DFA, each state-symbol pair must map to exactly one state.");
+                    throw new DeterministicFiniteAutomatonException("In a DFA, each state-symbol pair must map to exactly one state.");
                 }
             }
 
 
             //There has to be defined transition for each (state x symbol) pair
-            foreach(var state in _states)
+            foreach (var state in _states)
             {
-                foreach(var symbol in _inputAlphabet)
+                foreach (var symbol in _inputAlphabet)
                 {
                     Tuple<State<TStateValue>, Symbol<TSymbolValue>> inputPair = new(state, symbol);
-                    
-                    if(!_transitionFunction.Contains(inputPair))
+
+                    if (!_transitionFunction.Contains(inputPair))
                     {
-                        throw new FiniteAutomatonException($"Transition for ({state} x {symbol}) is not defined.");
+                        throw new DeterministicFiniteAutomatonException($"Transition for ({state} x {symbol}) is not defined.");
                     }
                 }
             }
@@ -57,18 +57,18 @@ namespace FormalLanguagesLibrary.Automata
 
 
             //Just initializing newInitialState to not throw it an error
-            State <TStateValue> newInitialState = _initialState;
+            State<TStateValue> newInitialState = _initialState;
             var newFinalStates = new HashSet<State<TStateValue>>();
 
             foreach (var partition in partitions)
             {
                 var symbolRepresentingPartition = partition.First();
                 partitionsMapping[symbolRepresentingPartition] = partition;
-                if(partition.Contains(_initialState))
+                if (partition.Contains(_initialState))
                 {
                     newInitialState = symbolRepresentingPartition;
                 }
-                if(partition.Intersect(_finalStates).Any())
+                if (partition.Intersect(_finalStates).Any())
                 {
                     newFinalStates.Add(symbolRepresentingPartition);
                 }
@@ -81,16 +81,16 @@ namespace FormalLanguagesLibrary.Automata
 
 
             //Create mapping for new states
-            foreach(var newState in newStates)
+            foreach (var newState in newStates)
             {
-                foreach(var symbol in _inputAlphabet)
+                foreach (var symbol in _inputAlphabet)
                 {
                     var outputState = _transitionFunction[newState, symbol].First();
-                    foreach(var (symbolRepresentingPartition,partition) in partitionsMapping)
+                    foreach (var (symbolRepresentingPartition, partition) in partitionsMapping)
                     {
-                        if(partition.Contains(outputState))
+                        if (partition.Contains(outputState))
                         {
-                            newTransitionFunction.AddTransition(newState,symbol,symbolRepresentingPartition);
+                            newTransitionFunction.AddTransition(newState, symbol, symbolRepresentingPartition);
                         }
                     }
                 }
@@ -119,14 +119,14 @@ namespace FormalLanguagesLibrary.Automata
                 partitionChanged = false;
                 var newPartitions = new List<HashSet<State<TStateValue>>>();
 
-                foreach(var partition in partitions)
+                foreach (var partition in partitions)
                 {
                     var recalculatedPartitionList = RecalculatePartition(partition, partitions);
-                    if(recalculatedPartitionList.Count != 1)
+                    if (recalculatedPartitionList.Count != 1)
                     {
                         partitionChanged = true;
                     }
-                    foreach(var newPartition in recalculatedPartitionList)
+                    foreach (var newPartition in recalculatedPartitionList)
                     {
                         newPartitions.Add(newPartition);
                     }
@@ -160,14 +160,14 @@ namespace FormalLanguagesLibrary.Automata
             return true;
         }
 
-        private List<HashSet<State<TStateValue>>> RecalculatePartition (HashSet<State<TStateValue>> partition, List<HashSet<State<TStateValue>>> partitionsOfEquivalence)
+        private List<HashSet<State<TStateValue>>> RecalculatePartition(HashSet<State<TStateValue>> partition, List<HashSet<State<TStateValue>>> partitionsOfEquivalence)
         {
 
             var newPartitions = new List<HashSet<State<TStateValue>>>();
 
-            foreach(var state in partition)
+            foreach (var state in partition)
             {
-                if(newPartitions.Count == 0)
+                if (newPartitions.Count == 0)
                 {
                     newPartitions.Add(new HashSet<State<TStateValue>> { state });
                     continue;
@@ -175,9 +175,9 @@ namespace FormalLanguagesLibrary.Automata
 
                 else
                 {
-                    foreach(var newPartition in newPartitions)
+                    foreach (var newPartition in newPartitions)
                     {
-                        if(AreStatesEquivalent(state, newPartition.First(), partitionsOfEquivalence))
+                        if (AreStatesEquivalent(state, newPartition.First(), partitionsOfEquivalence))
                         {
                             newPartition.Add(state);
                             continue;
@@ -190,5 +190,12 @@ namespace FormalLanguagesLibrary.Automata
             return newPartitions;
         }
 
+    }
+    public class DeterministicFiniteAutomatonException : FiniteAutomatonException
+    {
+        public DeterministicFiniteAutomatonException(string message) : base(message)
+        {
+
+        }
     }
 }

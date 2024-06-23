@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("FormalLanguagesLibrary")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("FormalLanguageLibraryTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7898c93f49c0031a6494b2c4c88d505702f2379d")]
-[assembly: System.Reflection.AssemblyProductAttribute("FormalLanguagesLibrary")]
-[assembly: System.Reflection.AssemblyTitleAttribute("FormalLanguagesLibrary")]
+[assembly: System.Reflection.AssemblyProductAttribute("FormalLanguageLibraryTests")]
+[assembly: System.Reflection.AssemblyTitleAttribute("FormalLanguageLibraryTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Vygenerované třídou WriteCodeFragment nástroje MSBuild

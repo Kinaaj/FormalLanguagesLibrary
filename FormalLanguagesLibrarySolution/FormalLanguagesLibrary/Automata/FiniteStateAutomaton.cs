@@ -27,7 +27,7 @@ namespace FormalLanguagesLibrary.Automata
 
         public FiniteStateAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues, TStateValue initialStateValue, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, IEnumerable<TStateValue> finalStatesValues)
         {
-            foreach(TSymbolValue symbolValue in inputAlphabetValues)
+            foreach (TSymbolValue symbolValue in inputAlphabetValues)
             {
                 Symbol<TSymbolValue> symbol = new(symbolValue);
                 _inputAlphabet.Add(symbol);
@@ -42,7 +42,7 @@ namespace FormalLanguagesLibrary.Automata
 
             _transitionFunction = new(transitionFunction);
 
-            foreach(TStateValue stateValue in finalStatesValues)
+            foreach (TStateValue stateValue in finalStatesValues)
             {
                 State<TStateValue> state = new(stateValue);
                 _finalStates.Add(state);
@@ -79,7 +79,7 @@ namespace FormalLanguagesLibrary.Automata
 
             foreach (var symbol in symbols)
             {
-                if(!_inputAlphabet.Contains(symbol))
+                if (!_inputAlphabet.Contains(symbol))
                 {
                     throw new FiniteAutomatonException($"Symbol {symbol} in the input sequence {symbols.ToString()} is not included in the input alphabet.");
                 }
@@ -99,7 +99,7 @@ namespace FormalLanguagesLibrary.Automata
         {
             List<Symbol<TSymbolValue>> list = new();
 
-            foreach(var symbolValue in symbols)
+            foreach (var symbolValue in symbols)
             {
                 list.Add(new Symbol<TSymbolValue>(symbolValue));
             }
@@ -168,7 +168,7 @@ namespace FormalLanguagesLibrary.Automata
                 }
 
                 // Check if the input symbol is in the input alphabet
-                if (!_inputAlphabet.Contains(inputSymbol))
+                if (!_inputAlphabet.Contains(inputSymbol) && inputSymbol.Type != SymbolType.Epsilon)
                 {
                     throw new FiniteAutomatonException($"Symbol {inputSymbol} in the transition function must be part of the input alphabet.");
                 }
@@ -185,7 +185,7 @@ namespace FormalLanguagesLibrary.Automata
 
             foreach (var finalState in _finalStates)
             {
-                if(!_states.Contains(finalState))
+                if (!_states.Contains(finalState))
                 {
                     throw new FiniteAutomatonException($"Final state {finalState} must be defined in states.");
                 }
@@ -207,7 +207,7 @@ namespace FormalLanguagesLibrary.Automata
                     reachable.Add(state);
 
 
-                    foreach(var symbol in _inputAlphabet)
+                    foreach (var symbol in _inputAlphabet)
                     {
                         var newReachableStates = _transitionFunction.GetClosure(state, symbol);
                         foreach (var newState in newReachableStates)
