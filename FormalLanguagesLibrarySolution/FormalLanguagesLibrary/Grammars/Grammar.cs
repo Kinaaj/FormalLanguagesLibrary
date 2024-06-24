@@ -43,7 +43,7 @@ namespace FormalLanguagesLibrary.Grammars
             _checkInvariants();
         }
 
-        public Grammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules)
+        public Grammar(HashSet<Symbol<T>> nonTerminals, HashSet<Symbol<T>> terminals, Symbol<T>? startTSymbolValue, HashSet<ProductionRule<T>> productionRules)
         {
             foreach (var nonTerminal in nonTerminals)
             {
@@ -53,7 +53,7 @@ namespace FormalLanguagesLibrary.Grammars
             {
                 _terminals.Add(terminal);
             }
-            _startSymbol = starTSymbolValue;
+            _startSymbol = startTSymbolValue;
 
             foreach(var rule in productionRules)
             {
@@ -63,21 +63,20 @@ namespace FormalLanguagesLibrary.Grammars
             _checkInvariants();
         }
 
-        // Constructor for easier creating of a Grammar
-        public Grammar(T[] nonTerminals, T[] terminals, T? startTSymbolValue, Tuple<T[], T[]>[] productionRules)
+        public Grammar(IEnumerable<T> nonTerminals, IEnumerable<T> terminals, T? startTSymbolValue, IEnumerable<Tuple<IEnumerable<T>,IEnumerable<T>>> productionRules)
         {
-            foreach(T symbol in  nonTerminals)
+            foreach (T symbol in nonTerminals)
             {
                 _nonTerminals.Add(new Symbol<T>(symbol, SymbolType.NonTerminal));
             }
 
-            foreach(T symbol in  terminals)
+            foreach (T symbol in terminals)
             {
                 _terminals.Add(new Symbol<T>(symbol, SymbolType.Terminal));
             }
 
 
-            if(startTSymbolValue is null)
+            if (startTSymbolValue is null)
             {
                 _startSymbol = null;
             }
@@ -88,9 +87,9 @@ namespace FormalLanguagesLibrary.Grammars
 
             foreach (var rule in productionRules)
             {
-                List<Symbol<T>> leftHandSide = []; 
+                List<Symbol<T>> leftHandSide = [];
 
-                foreach(T value in rule.Item1)
+                foreach (T value in rule.Item1)
                 {
                     if (nonTerminals.Contains(value))
                     {
@@ -113,8 +112,8 @@ namespace FormalLanguagesLibrary.Grammars
                 {
                     rightHandSide.Add(Symbol<T>.Epsilon);
                 }
-                
-                foreach(T value in rule.Item2)
+
+                foreach (T value in rule.Item2)
                 {
 
                     if (nonTerminals.Contains(value))
@@ -123,7 +122,7 @@ namespace FormalLanguagesLibrary.Grammars
                     }
                     else if (terminals.Contains(value))
                     {
-                        rightHandSide.Add(new Symbol<T>(value,SymbolType.Terminal));
+                        rightHandSide.Add(new Symbol<T>(value, SymbolType.Terminal));
                     }
                     else
                     {
@@ -151,6 +150,25 @@ namespace FormalLanguagesLibrary.Grammars
         //Check the format for corresponding type of the grammar
         protected abstract void _checkFormatOfProductionRule(ProductionRule<T> rule);
 
+
+
+        public bool TryAddRule(ProductionRule<T> rule)
+        {
+            //TODO: Create a alternative function that returns bool and not throwing an error:
+
+            try
+            {
+                _checkProductionRule(rule);
+                _checkFormatOfProductionRule(rule);
+                _productionRules.Add(rule);
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
 
 
@@ -236,15 +254,14 @@ namespace FormalLanguagesLibrary.Grammars
                 }
             }
 
+            if (rule.IsEpsilonRule())
+            {
+                return;
+            }
 
             foreach (var symbol in rule.RightHandSide)
             {
                 //If the right-hand side is epsilon, continue
-                if(rule.IsEpsilonRule())
-                {
-                    continue;
-                }
-
                 if (!_nonTerminals.Contains(symbol) && !_terminals.Contains(symbol))
                 {
                     throw new GrammarException($"Symbol {symbol} is not defined in terminals and either in non-terminals.");

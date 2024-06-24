@@ -28,17 +28,32 @@ namespace FormalLanguagesLibrary.Automata
                 epsilonClosures[state] = _transitionFunction.GetEpsilonClosure(state);
             }
 
-            foreach (var ((inputState, inputSymbol), outputStates) in _transitionFunction.Transitions)
+
+            foreach(var actualState in _states)
             {
 
-                HashSet<State<TStateValue>> newOutputStates = new HashSet<State<TStateValue>>();
-
-                foreach(var outputState in outputStates)
+                foreach (var ((inputState, inputSymbol), outputStates) in _transitionFunction.Transitions)
                 {
-                    newOutputStates.UnionWith(epsilonClosures[outputState]);
+                    if (inputSymbol.Type == SymbolType.Epsilon)
+                    {
+                        continue;
+                    }
+
+                    // if the state at the left side of transition is reachable from the actual state
+                    if(epsilonClosures[actualState].Contains(inputState))
+                    {
+                        HashSet<State<TStateValue>> newOutputStates = new HashSet<State<TStateValue>>();
+
+                        foreach (var outputState in outputStates)
+                        {
+                            newOutputStates.UnionWith(epsilonClosures[outputState]);
+                        }
+                        newTransitionFunction.AddTransition(actualState, inputSymbol, newOutputStates);
+                    }
                 }
-                newTransitionFunction.AddTransition(inputState, inputSymbol, newOutputStates);
             }
+
+
 
             HashSet<State<TStateValue>> newFinalStates = new();
             foreach(var state in _states)

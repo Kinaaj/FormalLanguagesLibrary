@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2gQ3BAEn/WqfQzcOOHLncKNumIZB5CGuj8aHH3uhoOhHe04XoyXCazX+g86CYgAJBh8eamRxhgohOPL/DUqwWg==",
+  "dgSpecHash": "1ZP0B32p34hADRcSWqBZ3cVDBTC7XDce2kJrXT6et6lsP+UJUh6BihzawKAMtnT/Reaon1SlIZWzaNgoVGdSXw==",
   "success": true,
-  "projectFilePath": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/FormalLanguagesLibrary.csproj",
+  "projectFilePath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

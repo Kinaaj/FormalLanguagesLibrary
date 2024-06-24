@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 
 namespace FormalLanguagesLibrary.Automata
 {
 
-    public class TransitionFunction<TSymbolValue, TStateValue>
+    public class TransitionFunction<TSymbolValue, TStateValue> : IEquatable<TransitionFunction<TSymbolValue, TStateValue>>
     {
 
         private Dictionary<Tuple<State<TStateValue>, Symbol<TSymbolValue>>, HashSet<State<TStateValue>>> _transitions = new();
@@ -138,13 +139,31 @@ namespace FormalLanguagesLibrary.Automata
             return _transitions.Remove(new(state, symbol));
         }
 
+        public bool RemoveTransition(State<TStateValue> state, Symbol<TSymbolValue> symbol, State<TStateValue> outputState)
+        {
+            Tuple<State<TStateValue>, Symbol<TSymbolValue>> pair = new(state, symbol);
+
+            bool successfulyRemoved = _transitions[pair]?.Remove(outputState) ?? false;
+
+            if(successfulyRemoved && _transitions[pair].Count == 0)
+            {
+                _transitions.Remove(pair);
+            }
+            return successfulyRemoved;
+        }
+
+        public bool RemoveTransition(TStateValue stateValue, TSymbolValue symbolValue, TStateValue outputStateValue)
+        {
+            return RemoveTransition(new State<TStateValue>(stateValue), new Symbol<TSymbolValue>(symbolValue), new State<TStateValue>(outputStateValue));
+        }
+
 
         public bool HasEpsilonTransitions()
         {
             foreach(var transition in _transitions)
             {
                 var inputSymbol = transition.Key.Item2;
-                if (inputSymbol.Type.Equals(SymbolType.Epsilon))
+                if (inputSymbol.Type.Equals(SymbolType.Epsilon) && transition.Value.Count != 0)
                 {
                     return true;
                 }
@@ -160,7 +179,9 @@ namespace FormalLanguagesLibrary.Automata
 
         public bool Contains(Tuple<State<TStateValue>, Symbol<TSymbolValue>> inputPair)
         {
-            return _transitions.ContainsKey(inputPair);
+
+
+            return (_transitions.ContainsKey(inputPair) && _transitions[inputPair].Count != 0);
         }
 
         public override string ToString()
@@ -183,11 +204,19 @@ namespace FormalLanguagesLibrary.Automata
         {
             get
             {
-               return GetTransition(inputState, inputSymbol);
+               return GetOutputStates(inputState, inputSymbol);
             }
         }
 
-        public HashSet<State<TStateValue>> GetTransition(State<TStateValue> inputState, Symbol<TSymbolValue> inputSymbol)
+        public HashSet<State<TStateValue>> this[TStateValue inputState, TSymbolValue inputSymbol]
+        {
+            get
+            {
+                return GetOutputStates(new(inputState), new(inputSymbol));
+            }
+        }
+
+        public HashSet<State<TStateValue>> GetOutputStates(State<TStateValue> inputState, Symbol<TSymbolValue> inputSymbol)
         {
             var key = Tuple.Create(inputState, inputSymbol);
             return _transitions.ContainsKey(key) ? _transitions[key] : new HashSet<State<TStateValue>>();
@@ -208,10 +237,7 @@ namespace FormalLanguagesLibrary.Automata
                    closure.UnionWith(outputStates);
                 }
             }
-
-            HashSet<State<TStateValue>> finalClosure = GetEpsilonClosure(closure);
-
-            return finalClosure;
+            return closure;
         }
 
         public HashSet<State<TStateValue>> GetClosure(HashSet<State<TStateValue>> currentStates, Symbol<TSymbolValue> transitionSymbol)
@@ -276,8 +302,30 @@ namespace FormalLanguagesLibrary.Automata
             return finalClosure;
         }
 
+        public bool Equals(TransitionFunction<TSymbolValue, TStateValue>? other)
+        {
 
+            if(other == null)
+            { 
+                return false; 
+            }
 
+            foreach(var (inputPair, outputStates) in other.Transitions)
+            {
+                if (!_transitions.TryGetValue(inputPair, out _))
+                {
+                    return false;
+                }
+                else
+                {
+                    if (_transitions[inputPair].Equals(outputStates))
+                    {
+                        return false;
+                    }
+                }
+            }
 
+            return true;
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace FormalLanguagesLibrary.Grammars
 
         public RegularGrammar() : base() { }
         public RegularGrammar(ContextFreeGrammar<T> grammar) : base(grammar) { }
-        public RegularGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
-        public RegularGrammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
+        public RegularGrammar(HashSet<Symbol<T>> nonTerminals, HashSet<Symbol<T>> terminals, Symbol<T>? startTSymbolValue, HashSet<ProductionRule<T>> productionRules) : base(nonTerminals, terminals, startTSymbolValue, productionRules) { }
+        public RegularGrammar(IEnumerable<T> nonTerminals, IEnumerable<T> terminals, T? startTSymbolValue, IEnumerable<Tuple<IEnumerable<T>, IEnumerable<T>>> productionRules) : base(nonTerminals, terminals, startTSymbolValue, productionRules) { }
 
         protected override void _checkFormatOfProductionRule(ProductionRule<T> rule)
         {
@@ -29,7 +29,7 @@ namespace FormalLanguagesLibrary.Grammars
 
             if(rule.RightHandSide.Length == 2)
             {
-                bool isRuleRightRegular = false;
+                bool isRuleRightRegular;
 
                 if (rule.RightHandSide[0].Type == SymbolType.Terminal && rule.RightHandSide[1].Type == SymbolType.NonTerminal)
                 {

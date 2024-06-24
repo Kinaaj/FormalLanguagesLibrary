@@ -8,8 +8,8 @@ namespace FormalLanguagesLibrary.Grammars
     {
         public ContextFreeGrammar() : base() { }
         public ContextFreeGrammar(ContextFreeGrammar<T> grammar) : base(grammar) { }
-        public ContextFreeGrammar(IEnumerable<Symbol<T>> nonTerminals, IEnumerable<Symbol<T>> terminals, Symbol<T>? starTSymbolValue, IEnumerable<ProductionRule<T>> productionRules) : base(nonTerminals,terminals,starTSymbolValue,productionRules) { }
-        public ContextFreeGrammar(T[] nonTerminals, T[] terminals, T? starTSymbolValue, Tuple<T[], T[]>[] productionRules) : base(nonTerminals, terminals, starTSymbolValue, productionRules) { }
+        public ContextFreeGrammar(HashSet<Symbol<T>> nonTerminals, HashSet<Symbol<T>> terminals, Symbol<T>? startTSymbolValue, HashSet<ProductionRule<T>> productionRules) : base(nonTerminals,terminals, startTSymbolValue, productionRules) { }
+        public ContextFreeGrammar(IEnumerable<T> nonTerminals, IEnumerable<T> terminals, T? startTSymbolValue, IEnumerable<Tuple<IEnumerable<T>, IEnumerable<T>>> productionRules) : base(nonTerminals, terminals, startTSymbolValue, productionRules) { }
 
         protected override void _checkFormatOfProductionRule(ProductionRule<T> rule)
         {
@@ -23,10 +23,18 @@ namespace FormalLanguagesLibrary.Grammars
             var nullable = GetNonTerminalsGeneratingEpsilon();
             var newRules = new HashSet<ProductionRule<T>>();
 
+            //Create a new production rules without nullable non-terminals
             foreach(var rule in _productionRules)
             {
-                newRules.UnionWith(CreateNewProductionRules(rule, nullable));
+                newRules.UnionWith(CreateNewProductionRulesForNullableNonTerminals(rule, nullable));
             }
+
+            //Remove epsilon rules
+            foreach(var rule in newRules)
+            {
+                if (rule.IsEpsilonRule()) newRules.Remove(rule);
+            }
+
 
             //Check if the starting symbol is on the right side and is generating epsilon
 
@@ -54,22 +62,31 @@ namespace FormalLanguagesLibrary.Grammars
                         newStartSymbol = newStartSymbol.GetNextSymbol();
                     }
 
-                    Symbol<T>[] l = { newStartSymbol };
-                    Symbol<T>[] r1 = { startSymbol };
-                    Symbol<T>[] r2 = { Symbol<T>.Epsilon };
-                    newRules.Add(new ProductionRule<T>(l, r1));
-                    newRules.Add(new ProductionRule<T>(l, r2));
+                    ProductionRule<T> newRule1 = new([newStartSymbol], [startSymbol]);
+                    ProductionRule<T> newRule2 = new([newStartSymbol], [Symbol<T>.Epsilon]);
+
+                    newRules.Add(newRule1);
+                    newRules.Add(newRule2);
+
                     _startSymbol = newStartSymbol;
                     _nonTerminals.Add(newStartSymbol);
                 }
+                else if(!isStartingSymbolOnRightSide && nullable.Contains(startSymbol))
+                {
+                    newRules.Add(new ProductionRule<T>([startSymbol], [Symbol<T>.Epsilon]));
+                }
             }
 
+            _productionRules = newRules;
         }
 
 
-        private HashSet<ProductionRule<T>> CreateNewProductionRules(ProductionRule<T> rule, HashSet<Symbol<T>> nullable)
+        private HashSet<ProductionRule<T>> CreateNewProductionRulesForNullableNonTerminals(ProductionRule<T> rule, HashSet<Symbol<T>> nullable)
         {
-            var newRules = new HashSet<ProductionRule<T>>();
+
+
+
+            var newRules = new HashSet<ProductionRule<T>>() {rule};
 
             int numberOfNullableOnRightHandSide = 0;
 
@@ -80,39 +97,42 @@ namespace FormalLanguagesLibrary.Grammars
                     numberOfNullableOnRightHandSide++;
                 }
             }
-
-
             
             int totalCombinations = 1 << numberOfNullableOnRightHandSide; // 2^length
 
+            //Skipping the last combination, where we are going to get the original rule
             for (int i = 0; i < totalCombinations; i++)
             {
                 var newRightSide = new List<Symbol<T>>();
-                int indexOfNextNullable = 0;
-                for (int j = 0; j < numberOfNullableOnRightHandSide; j++)
+                int indexOfNullable = 0;
+                for (int j = 0; j < rule.RightHandSide.Length; j++)
                 {
-                    while (!nullable.Contains(rule.RightHandSide[indexOfNextNullable]))
+                    // We add original symbol
+                    if (!nullable.Contains(rule.RightHandSide[j]))
                     {
-                        newRightSide.Add(rule.RightHandSide[indexOfNextNullable]);
-                        indexOfNextNullable++;
+                        newRightSide.Add(rule.RightHandSide[j]);
                     }
-
-                    if ((i & (1 << j)) != 0)
+                    else
                     {
-                        newRightSide.Add(rule.RightHandSide[indexOfNextNullable]);
+                        //We add nullable symbol based on the combination
+                        if ((i & (1 << indexOfNullable)) != 0)
+                        {
+                            newRightSide.Add(rule.RightHandSide[j]);
+                        }
+                        indexOfNullable++;
                     }
-
-                    indexOfNextNullable++;
                 }
 
 
                 if (newRightSide.Count != 0)
                 {
-                    newRules.Add(new(rule.LeftHandSide, newRightSide));
+                    ProductionRule < T > newRule = new(rule.LeftHandSide, newRightSide);
+                    newRules.Add(newRule);
                 }
                 else
                 {
-                    //Don't add the epsilon rules
+                    ProductionRule<T> newRule = new(rule.LeftHandSide, [Symbol<T>.Epsilon]);
+                    newRules.Add(newRule);
                 }
             }
             return newRules;
@@ -131,7 +151,12 @@ namespace FormalLanguagesLibrary.Grammars
                 {
                     var leftSymbol = rule.LeftHandSide[0];
 
-                    if (rule.IsEpsilonRule() && !nullable.Contains(leftSymbol))
+                    if(nullable.Contains(leftSymbol))
+                    {
+                        continue;
+                    }
+
+                    if (rule.IsEpsilonRule())
                     {
                         newNullable.Add(leftSymbol);
                     }

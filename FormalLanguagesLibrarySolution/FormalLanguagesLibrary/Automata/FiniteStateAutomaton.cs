@@ -83,13 +83,16 @@ namespace FormalLanguagesLibrary.Automata
                 {
                     throw new FiniteAutomatonException($"Symbol {symbol} in the input sequence {symbols.ToString()} is not included in the input alphabet.");
                 }
-
+                reachedStates = _transitionFunction.GetEpsilonClosure(reachedStates);   
+                //Console.Write($"Reached: {string.Join(',', reachedStates)} ->");
                 HashSet<State<TStateValue>> newReachedStates = _transitionFunction.GetClosure(reachedStates, symbol);
-
+                //Console.WriteLine($"{symbol} NewReached: {string.Join(',', newReachedStates)}");
 
                 reachedStates = newReachedStates;
                 newReachedStates = new();
             }
+
+            reachedStates = _transitionFunction.GetEpsilonClosure(reachedStates);
 
             // Check if there is at least one final state in the reached states
             return _finalStates.Intersect(reachedStates).Any();
@@ -178,7 +181,7 @@ namespace FormalLanguagesLibrary.Automata
                 {
                     if (!_states.Contains(outputState))
                     {
-                        throw new FiniteAutomatonException($"State {inputState} in the transition function must be part of the set of states.");
+                        throw new FiniteAutomatonException($"State {outputState} in the transition function must be part of the set of states.");
                     }
                 }
             }

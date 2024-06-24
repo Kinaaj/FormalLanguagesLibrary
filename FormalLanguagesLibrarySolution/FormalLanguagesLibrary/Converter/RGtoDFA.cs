@@ -4,9 +4,9 @@ using FormalLanguagesLibrary.Grammars;
 namespace FormalLanguagesLibrary.Converter
 {
 
-    public class RGtoDFA
+    public class Convert
     {
-        public static NonDeterministicFiniteAutomaton<char, string> Convert(RegularGrammar<char> grammar)
+        public static NonDeterministicFiniteAutomaton<char, string> RGtoNFA(RegularGrammar<char> grammar)
         {
 
             grammar.RemoveEpsilonRules();
@@ -24,9 +24,9 @@ namespace FormalLanguagesLibrary.Converter
 
             //Establish states and initialState
             //Create one state for each nonTerminal
-            foreach (var nonTerminal in  grammar.NonTerminals)
+            foreach (var nonTerminal in grammar.NonTerminals)
             {
-                var state = new State<string>($"{ nonTerminal.Value }");
+                var state = new State<string>($"{nonTerminal.Value}");
                 states.Add(state);
                 if(grammar.StartSymbol == nonTerminal)
                 {
@@ -35,16 +35,17 @@ namespace FormalLanguagesLibrary.Converter
             }
 
             //Establish final state
-            var finalState = new State<string>("f");
+            var finalState = new State<string>("final");
             int i = 0;
 
             while (states.Contains(finalState))
             {
-                finalState = new State<string>($"f{i}");
+                finalState = new State<string>($"final{i}");
                 i++;
             }
 
             finalStates.Add(finalState);
+            states.Add(finalState);
 
 
             //Establish transition function
@@ -53,10 +54,7 @@ namespace FormalLanguagesLibrary.Converter
 
             foreach(var rule in grammar.ProductionRules)
             {
-                if (rule.IsEpsilonRule())
-                {
-                    
-                }
+
 
                 string inputStateValue;
                 char inputSymbolValue = default;
@@ -64,8 +62,12 @@ namespace FormalLanguagesLibrary.Converter
 
                 inputStateValue = $"{rule.LeftHandSide[0].Value}";
 
+                if (rule.IsEpsilonRule())
+                {
+                    finalStates.Add(new State<string>(inputStateValue));
+                }
 
-                if(rule.RightHandSide.Length == 1)
+                else if (rule.RightHandSide.Length == 1)
                 {
                     inputSymbolValue = rule.RightHandSide[0].Value;
                     outputStateValue = finalState.Value;
@@ -89,6 +91,12 @@ namespace FormalLanguagesLibrary.Converter
                 }
                 transitionFunction.AddTransition(inputStateValue, inputSymbolValue, outputStateValue);
             }
+
+            Console.WriteLine($"Input alphabet: {string.Join(',', inputAlphabet)}");
+            Console.WriteLine($"States: {string.Join(',', states)}");
+            Console.WriteLine($"Initial state: {initialState}");
+            Console.WriteLine($"Transition function: {string.Join(',', transitionFunction.Transitions)}");
+            Console.WriteLine($"Final states: {string.Join(',', finalStates)}");
 
             return new NonDeterministicFiniteAutomaton<char, string>(inputAlphabet, states, initialState, transitionFunction, finalStates);
         }

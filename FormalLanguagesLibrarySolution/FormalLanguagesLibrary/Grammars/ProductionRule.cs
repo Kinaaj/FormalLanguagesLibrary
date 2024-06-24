@@ -9,7 +9,7 @@ namespace FormalLanguagesLibrary.Grammars
 {
 
 
-    public record class ProductionRule<T> where T : IComparable<T>, IIncrementOperators<T>
+    public sealed record class ProductionRule<T> : IEquatable<ProductionRule<T>> where T : IComparable<T>, IIncrementOperators<T>
     {
         static readonly string ProductionRuleStringSeparator = "->";
 
@@ -27,7 +27,7 @@ namespace FormalLanguagesLibrary.Grammars
 
         public bool IsEpsilonRule()
         {
-            if (LeftHandSide.Length == 1 && LeftHandSide[0].Type == SymbolType.Epsilon)
+            if (RightHandSide.Length == 1 && RightHandSide[0].Type == SymbolType.Epsilon)
             {
                 return true;
             }
@@ -37,9 +37,25 @@ namespace FormalLanguagesLibrary.Grammars
             }
         }
 
+
         public override int GetHashCode()
         {
-            return (LeftHandSide,RightHandSide).GetHashCode();
+            unchecked // Allow overflow
+            {
+                int hash = 17;
+
+                foreach (var symbol in LeftHandSide)
+                {
+                    hash = hash * 23 + symbol.GetHashCode();
+                }
+
+                foreach (var symbol in RightHandSide)
+                {
+                    hash = hash * 23 + symbol.GetHashCode();
+                }
+
+                return hash;
+            }
         }
 
 
@@ -114,6 +130,14 @@ namespace FormalLanguagesLibrary.Grammars
             return sb.ToString();
         }
 
+        public bool Equals(ProductionRule<T>? other)
+        {
+            if (other is null) return false;
+            else
+            {
+                return (Enumerable.SequenceEqual(LeftHandSide, other.LeftHandSide) && Enumerable.SequenceEqual(RightHandSide, other.RightHandSide));
+            }
+        }
     }
 
     public class ProductionRuleException : Exception

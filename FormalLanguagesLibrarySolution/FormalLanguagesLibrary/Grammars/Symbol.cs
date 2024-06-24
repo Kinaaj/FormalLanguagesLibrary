@@ -36,7 +36,11 @@ namespace FormalLanguagesLibrary.Grammars
             if (Type == SymbolType.Epsilon && other.Type == SymbolType.Epsilon)
                 return true;
 
-            return EqualityComparer<T>.Default.Equals(Value, other.Value);
+            else if((Type == SymbolType.Epsilon && other.Type != SymbolType.Epsilon) || (Type != SymbolType.Epsilon && other.Type == SymbolType.Epsilon))
+                return false;
+
+            else
+                return EqualityComparer<T>.Default.Equals(Value, other.Value);
         }
 
         public bool Equals(T other)
