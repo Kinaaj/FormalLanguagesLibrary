@@ -21,7 +21,7 @@ namespace FormalLanguagesLibrary.Automata
             //It cannot include any epsilon transitions
             if (_transitionFunction.HasEpsilonTransitions())
             {
-                throw new FiniteAutomatonException("In a NFA, there cannot be epsilon transitions");
+                throw new NonDeterministicFiniteAutomatonException("In a NFA, there cannot be epsilon transitions");
             }
         }
 
@@ -30,5 +30,13 @@ namespace FormalLanguagesLibrary.Automata
             throw new NotImplementedException();
         }
 
+    }
+
+    public class NonDeterministicFiniteAutomatonException : FiniteAutomatonException
+    {
+        public NonDeterministicFiniteAutomatonException(string message) : base(message)
+        {
+
+        }
     }
 }

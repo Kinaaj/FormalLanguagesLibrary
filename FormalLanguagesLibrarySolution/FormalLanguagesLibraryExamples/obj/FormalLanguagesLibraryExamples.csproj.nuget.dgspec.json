@@ -1,25 +1,91 @@
 {
   "format": 1,
   "restore": {
-    "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibraryExamples/FormalLanguagesLibraryExamples.csproj": {}
+    "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj": {}
   },
   "projects": {
-    "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/FormalLanguagesLibrary.csproj": {
+    "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/FormalLanguagesLibrary.csproj",
-        "projectName": "FormalLanguagesLibrary",
-        "projectPath": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/FormalLanguagesLibrary.csproj",
-        "packagesPath": "/home/kinaj/.nuget/packages/",
-        "outputPath": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/obj/",
+        "projectUniqueName": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj",
+        "projectName": "FormalLanguagesLibraryExamples",
+        "projectPath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\FormalLanguagesLibraryExamples.csproj",
+        "packagesPath": "C:\\Users\\Programming\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibraryExamples\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/kinaj/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Programming\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj": {
+                "projectPath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj",
+        "projectName": "FormalLanguagesLibrary",
+        "projectPath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\FormalLanguagesLibrary.csproj",
+        "packagesPath": "C:\\Users\\Programming\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Programming\\Documents\\Csharp\\auto_and_grammars_library\\FormalLanguagesLibrarySolution\\FormalLanguagesLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Programming\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,6 +98,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -53,64 +124,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibraryExamples/FormalLanguagesLibraryExamples.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibraryExamples/FormalLanguagesLibraryExamples.csproj",
-        "projectName": "FormalLanguagesLibraryExamples",
-        "projectPath": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibraryExamples/FormalLanguagesLibraryExamples.csproj",
-        "packagesPath": "/home/kinaj/.nuget/packages/",
-        "outputPath": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibraryExamples/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/home/kinaj/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {
-              "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/FormalLanguagesLibrary.csproj": {
-                "projectPath": "/home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/FormalLanguagesLibrary.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

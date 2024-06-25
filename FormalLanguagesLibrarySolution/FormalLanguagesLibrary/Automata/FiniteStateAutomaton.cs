@@ -1,37 +1,37 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-
 
 namespace FormalLanguagesLibrary.Automata
 {
-    //TODO TSymbolValue -> Symbol<TSymbolValue> and TState -> State<TState>
+    // Abstract base class representing a finite state automaton (NFA or DFA)
     public abstract class FiniteStateAutomaton<TSymbolValue, TStateValue> : Automaton
     {
-
+        // Protected fields to store input alphabet, states, initial state, transition function, and final states
         protected HashSet<Symbol<TSymbolValue>> _inputAlphabet = new();
         protected HashSet<State<TStateValue>> _states = new();
         protected State<TStateValue> _initialState;
         protected TransitionFunction<TSymbolValue, TStateValue> _transitionFunction;
         protected HashSet<State<TStateValue>> _finalStates = new();
 
-
+        // Public properties to expose read-only collections of input alphabet, states, initial state, transition function, and final states
         public IReadOnlyCollection<Symbol<TSymbolValue>> InputAlphabet => _inputAlphabet;
         public IReadOnlyCollection<State<TStateValue>> States => _states;
         public State<TStateValue> InitialState => _initialState;
         public TransitionFunction<TSymbolValue, TStateValue> TransitionFunction => _transitionFunction;
         public IReadOnlyCollection<State<TStateValue>> FinalStates => _finalStates;
 
-
-
-
-        public FiniteStateAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues, TStateValue initialStateValue, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, IEnumerable<TStateValue> finalStatesValues)
+        public FiniteStateAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues,
+                                    TStateValue initialStateValue, TransitionFunction<TSymbolValue, TStateValue> transitionFunction,
+                                    IEnumerable<TStateValue> finalStatesValues)
         {
             foreach (TSymbolValue symbolValue in inputAlphabetValues)
             {
                 Symbol<TSymbolValue> symbol = new(symbolValue);
                 _inputAlphabet.Add(symbol);
             }
+
             foreach (TStateValue stateValue in statesValues)
             {
                 State<TStateValue> state = new(stateValue);
@@ -48,10 +48,13 @@ namespace FormalLanguagesLibrary.Automata
                 _finalStates.Add(state);
             }
 
+            // Check invariants to ensure consistency of the automaton
             _checkInvariants();
         }
 
-        public FiniteStateAutomaton(HashSet<Symbol<TSymbolValue>> inputAlphabet, HashSet<State<TStateValue>> states, State<TStateValue> initialState, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, HashSet<State<TStateValue>> finalStates)
+        public FiniteStateAutomaton(HashSet<Symbol<TSymbolValue>> inputAlphabet, HashSet<State<TStateValue>> states,
+                                    State<TStateValue> initialState, TransitionFunction<TSymbolValue, TStateValue> transitionFunction,
+                                    HashSet<State<TStateValue>> finalStates)
         {
             _inputAlphabet = inputAlphabet;
             _states = states;
@@ -59,9 +62,11 @@ namespace FormalLanguagesLibrary.Automata
             _transitionFunction = transitionFunction;
             _finalStates = finalStates;
 
+            // Check invariants to ensure consistency of the automaton
             _checkInvariants();
         }
 
+        // Copy constructor to create a deep copy of another finite state automaton
         public FiniteStateAutomaton(FiniteStateAutomaton<TSymbolValue, TStateValue> other)
         {
             _inputAlphabet = new(other.InputAlphabet);
@@ -71,82 +76,55 @@ namespace FormalLanguagesLibrary.Automata
             _finalStates = new(other.FinalStates);
         }
 
-
+        // Method to check if the automaton accepts a sequence of symbols
         public bool Accepts(IEnumerable<Symbol<TSymbolValue>> symbols)
         {
-            // Start at the initial state
+            // Start with the initial state
             HashSet<State<TStateValue>> reachedStates = new() { _initialState };
 
             foreach (var symbol in symbols)
             {
+                // Check if the symbol is in the input alphabet
                 if (!_inputAlphabet.Contains(symbol))
                 {
                     throw new FiniteAutomatonException($"Symbol {symbol} in the input sequence {symbols.ToString()} is not included in the input alphabet.");
                 }
-                reachedStates = _transitionFunction.GetEpsilonClosure(reachedStates);   
-                //Console.Write($"Reached: {string.Join(',', reachedStates)} ->");
-                HashSet<State<TStateValue>> newReachedStates = _transitionFunction.GetClosure(reachedStates, symbol);
-                //Console.WriteLine($"{symbol} NewReached: {string.Join(',', newReachedStates)}");
 
+                // Compute epsilon closure of the reached states
+                reachedStates = _transitionFunction.GetEpsilonClosure(reachedStates);
+
+                // Compute new reached states based on current symbol
+                HashSet<State<TStateValue>> newReachedStates = _transitionFunction.GetClosure(reachedStates, symbol);
+
+                // Update reached states with new reached states
                 reachedStates = newReachedStates;
                 newReachedStates = new();
             }
 
+            // Compute epsilon closure of final reached states
             reachedStates = _transitionFunction.GetEpsilonClosure(reachedStates);
 
             // Check if there is at least one final state in the reached states
             return _finalStates.Intersect(reachedStates).Any();
         }
 
+        // Overloaded Accepts method to accept an IEnumerable of symbol values
         public bool Accepts(IEnumerable<TSymbolValue> symbols)
         {
-            List<Symbol<TSymbolValue>> list = new();
-
-            foreach (var symbolValue in symbols)
-            {
-                list.Add(new Symbol<TSymbolValue>(symbolValue));
-            }
-
+            // Convert symbol values to symbols and call the main Accepts method
+            List<Symbol<TSymbolValue>> list = symbols.Select(symbolValue => new Symbol<TSymbolValue>(symbolValue)).ToList();
             return Accepts(list);
         }
 
+        // Overloaded Accepts method to accept an array of symbol values
         public bool Accepts(TSymbolValue[] symbols)
         {
+            // Call the Accepts method with IEnumerable of symbol values
             return Accepts((IEnumerable<TSymbolValue>)symbols);
         }
 
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            // Input Alphabet
-            sb.Append("Input Alphabet: {");
-            sb.Append(string.Join(", ", _inputAlphabet.Select(symbol => symbol.ToString())));
-            sb.AppendLine("}");
-
-            // States
-            sb.Append("States: {");
-            sb.Append(string.Join(", ", _states.Select(state => state.ToString())));
-            sb.AppendLine("}");
-
-            // Initial State
-            sb.AppendLine($"InitialState: {_initialState}");
-
-            // Transition Function (delta)
-            sb.Append($"delta:\n{_transitionFunction}");
-
-            // Final States
-            sb.Append("Final States: {");
-            sb.Append(string.Join(", ", _finalStates.Select(state => state.ToString())));
-            sb.AppendLine("}");
-
-            return sb.ToString();
-        }
-
-
+        // Method to convert the NFA to its corresponding DFA (to be implemented in derived classes)
         public abstract DeterministicFiniteAutomaton<TSymbolValue, TStateValue> ToDFA();
-
 
         protected virtual void _checkInvariants()
         {
@@ -196,8 +174,11 @@ namespace FormalLanguagesLibrary.Automata
 
         }
 
+
+        // Method to get reachable states starting from the initial state
         public HashSet<State<TStateValue>> GetReachableStates()
         {
+            // Initialize reachable states and queue to process states
             var reachable = new HashSet<State<TStateValue>>();
             var toProcess = new Queue<State<TStateValue>>();
             toProcess.Enqueue(_initialState);
@@ -205,14 +186,18 @@ namespace FormalLanguagesLibrary.Automata
             while (toProcess.Count > 0)
             {
                 var state = toProcess.Dequeue();
+
+                // Add state to reachable if not already added
                 if (!reachable.Contains(state))
                 {
                     reachable.Add(state);
 
-
+                    // Iterate through input alphabet to find reachable states for each symbol
                     foreach (var symbol in _inputAlphabet)
                     {
                         var newReachableStates = _transitionFunction.GetClosure(state, symbol);
+
+                        // Add epsilon closure of new state to queue for processing
                         foreach (var newState in newReachableStates)
                         {
                             var epsilonClosureOfNewState = _transitionFunction.GetEpsilonClosure(newState);
@@ -221,35 +206,63 @@ namespace FormalLanguagesLibrary.Automata
                                 toProcess.Enqueue(reachableState);
                             }
                         }
-
                     }
-
-
                 }
             }
 
             return reachable;
         }
 
+        // Method to remove unreachable states from the automaton
         public void RemoveUnreachableStates()
         {
-            //Remove unreachable states
+            // Get reachable and unreachable states
             var reachableStates = GetReachableStates();
             var unreachableStates = _states.Except(reachableStates);
+
+            // Update states and final states to include only reachable states
             _states.IntersectWith(reachableStates);
             _finalStates.IntersectWith(reachableStates);
 
+            // Remove transitions to/from unreachable states in transition function
             foreach (var unreachableState in unreachableStates)
             {
                 _transitionFunction.RemoveTransition(unreachableState);
             }
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new();
+
+            //Input Alphabet
+            sb.Append("InputAlphabet: {");
+            sb.Append(string.Join(", ", _inputAlphabet));
+            sb.AppendLine("}");
+
+            //States
+            sb.Append("States: {");
+            sb.Append(string.Join(", ", _states));
+            sb.AppendLine("}");
+
+            //Initial State
+            sb.Append($"InitialState: {_initialState}");
+
+            //Transition Function
+            sb.Append($"Transition Funciton:\n{_transitionFunction}");
+
+            //Final States
+            sb.Append("Final States: {");
+            sb.Append(string.Join(", ", _finalStates));
+            sb.AppendLine("}");
+
+            return sb.ToString();
+
+        }
 
     }
 
-
-
+    // Exception class for finite state automaton related errors
     public class FiniteAutomatonException : Exception
     {
         public FiniteAutomatonException(string message) : base(message)
@@ -257,5 +270,4 @@ namespace FormalLanguagesLibrary.Automata
 
         }
     }
-
 }

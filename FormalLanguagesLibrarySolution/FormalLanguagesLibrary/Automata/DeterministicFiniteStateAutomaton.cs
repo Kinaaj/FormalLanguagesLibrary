@@ -1,10 +1,13 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FormalLanguagesLibrary.Automata
 {
+    // Deterministic finite automaton (DFA)
     public class DeterministicFiniteAutomaton<TSymbolValue, TStateValue> : NonDeterministicFiniteAutomaton<TSymbolValue, TStateValue>
     {
-
+        // Constructors to initialize the DFA from various inputs
         public DeterministicFiniteAutomaton(DeterministicFiniteAutomaton<TSymbolValue, TStateValue> other) : base(other) { }
 
         public DeterministicFiniteAutomaton(IEnumerable<TSymbolValue> inputAlphabetValues, IEnumerable<TStateValue> statesValues, TStateValue initialStateValue, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, IEnumerable<TStateValue> finalStatesValues) : base(inputAlphabetValues, statesValues, initialStateValue, transitionFunction, finalStatesValues)
@@ -14,10 +17,10 @@ namespace FormalLanguagesLibrary.Automata
 
         public DeterministicFiniteAutomaton(HashSet<Symbol<TSymbolValue>> inputAlphabet, HashSet<State<TStateValue>> states, State<TStateValue> initialState, TransitionFunction<TSymbolValue, TStateValue> transitionFunction, HashSet<State<TStateValue>> finalStates) : base(inputAlphabet, states, initialState, transitionFunction, finalStates) { }
 
-
+        // Override invariant checks specific to DFA
         protected override void _checkInvariants()
         {
-            base._checkInvariants();
+            base._checkInvariants(); // Check invariants from the base class
 
             // Ensure each state-symbol pair maps to exactly one state
             foreach (var transition in _transitionFunction.Transitions)
@@ -31,8 +34,7 @@ namespace FormalLanguagesLibrary.Automata
                 }
             }
 
-
-            //There has to be defined transition for each (state x symbol) pair
+            // Ensure there is a defined transition for each (state x symbol) pair
             foreach (var state in _states)
             {
                 foreach (var symbol in _inputAlphabet)
@@ -47,23 +49,24 @@ namespace FormalLanguagesLibrary.Automata
             }
         }
 
+        // Minimize the DFA
         public void Minimize()
         {
-            RemoveUnreachableStates();
+            RemoveUnreachableStates(); // Remove unreachable states first
 
-            var partitions = GetEquivalentPartitions();
+            var partitions = GetEquivalentPartitions(); // Get equivalent partitions
 
             var partitionsMapping = new Dictionary<State<TStateValue>, HashSet<State<TStateValue>>>();
-
-
-            //Just initializing newInitialState to not throw it an error
             State<TStateValue> newInitialState = _initialState;
             var newFinalStates = new HashSet<State<TStateValue>>();
 
+            // Map states to their equivalent partitions
             foreach (var partition in partitions)
             {
                 var symbolRepresentingPartition = partition.First();
                 partitionsMapping[symbolRepresentingPartition] = partition;
+
+                // Determine new initial state and final states based on partitions
                 if (partition.Contains(_initialState))
                 {
                     newInitialState = symbolRepresentingPartition;
@@ -75,12 +78,9 @@ namespace FormalLanguagesLibrary.Automata
             }
 
             var newStates = new HashSet<State<TStateValue>>(partitionsMapping.Keys);
-
-
             var newTransitionFunction = new TransitionFunction<TSymbolValue, TStateValue>();
 
-
-            //Create mapping for new states
+            // Create transitions for new states based on equivalent partitions
             foreach (var newState in newStates)
             {
                 foreach (var symbol in _inputAlphabet)
@@ -96,16 +96,19 @@ namespace FormalLanguagesLibrary.Automata
                 }
             }
 
+            // Update DFA properties with minimized states and transitions
             _states = newStates;
-            _finalStates = newStates;
+            _finalStates = newFinalStates;
             _initialState = newInitialState;
             _transitionFunction = newTransitionFunction;
-            _checkInvariants();
+
+            _checkInvariants(); // Check invariants after minimization
         }
 
+        // Get equivalent partitions of states for minimization
         private List<HashSet<State<TStateValue>>> GetEquivalentPartitions()
         {
-            // Create one initial partition of final and non-final states
+            // Create initial partitions of final and non-final states
             var partitions = new List<HashSet<State<TStateValue>>>
             {
                 new HashSet<State<TStateValue>>(_finalStates),
@@ -114,6 +117,7 @@ namespace FormalLanguagesLibrary.Automata
 
             bool partitionChanged;
 
+            // Iteratively refine partitions until no changes occur
             do
             {
                 partitionChanged = false;
@@ -135,10 +139,10 @@ namespace FormalLanguagesLibrary.Automata
             }
             while (partitionChanged == true);
 
-
             return partitions;
         }
 
+        // Check if two states are equivalent in the context of DFA minimization
         private bool AreStatesEquivalent(State<TStateValue> state1, State<TStateValue> state2, List<HashSet<State<TStateValue>>> partitionsOfEquivalence)
         {
             foreach (var symbol in _inputAlphabet)
@@ -160,9 +164,9 @@ namespace FormalLanguagesLibrary.Automata
             return true;
         }
 
+        // Refine a partition of states based on equivalence
         private List<HashSet<State<TStateValue>>> RecalculatePartition(HashSet<State<TStateValue>> partition, List<HashSet<State<TStateValue>>> partitionsOfEquivalence)
         {
-
             var newPartitions = new List<HashSet<State<TStateValue>>>();
 
             foreach (var state in partition)
@@ -183,14 +187,15 @@ namespace FormalLanguagesLibrary.Automata
                             continue;
                         }
                     }
-                    //Else create a new partition with the state
+                    // Else create a new partition with the state
                     newPartitions.Add(new HashSet<State<TStateValue>> { state });
                 }
             }
             return newPartitions;
         }
-
     }
+
+    // Exception specific to DFA operations
     public class DeterministicFiniteAutomatonException : FiniteAutomatonException
     {
         public DeterministicFiniteAutomatonException(string message) : base(message)

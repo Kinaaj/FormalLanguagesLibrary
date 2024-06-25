@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FormalLanguagesLibrary
-build_property.ProjectDir = /home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/
+build_property.ProjectDir = C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
