@@ -22,15 +22,3 @@ C:/Users/Programming/Documents/Csharp/auto_and_grammars_library/FormalLanguagesL
 /home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/obj/Debug/net8.0/refint/FormalLanguagesLibrary.dll
 /home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/obj/Debug/net8.0/FormalLanguagesLibrary.pdb
 /home/kinaj/Documents/csharp/mff-csharp_1/FormalLanguagesLibrary/FormalLanguagesLibrarySolution/FormalLanguagesLibrary/obj/Debug/net8.0/ref/FormalLanguagesLibrary.dll
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\bin\Debug\net8.0\FormalLanguagesLibrary.deps.json
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\bin\Debug\net8.0\FormalLanguagesLibrary.dll
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\bin\Debug\net8.0\FormalLanguagesLibrary.pdb
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.AssemblyInfoInputs.cache
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.AssemblyInfo.cs
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.csproj.CoreCompileInputs.cache
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.sourcelink.json
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.dll
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\refint\FormalLanguagesLibrary.dll
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\FormalLanguagesLibrary.pdb
-C:\Users\Programming\Documents\Csharp\auto_and_grammars_library\FormalLanguagesLibrarySolution\FormalLanguagesLibrary\obj\Debug\net8.0\ref\FormalLanguagesLibrary.dll

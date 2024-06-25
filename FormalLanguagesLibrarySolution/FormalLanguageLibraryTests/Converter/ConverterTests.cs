@@ -44,7 +44,6 @@ namespace FormalLanguageLibraryTests.Converter
 
             RegularGrammar<char> regularGrammar = new(nonTerminals, terminals, startSymbol, productionRules);
 
-
             var automaton = FormalLanguagesLibrary.Converter.Convert.RGtoNFA(regularGrammar);
 
             AutomataState stateA = new("A");
@@ -61,8 +60,6 @@ namespace FormalLanguageLibraryTests.Converter
 
             HashSet<AutomataState> expectedFinalStates = [stateA, finalState];
             AutomataState expectedStartingState = stateA;
-
-
 
 
 

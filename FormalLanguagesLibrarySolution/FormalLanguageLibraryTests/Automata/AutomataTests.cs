@@ -143,8 +143,8 @@ namespace FormalLanguageLibraryTests.Automata
 
             foreach (var (inputString, accepted) in inputs)
             {
-                Console.WriteLine($"{inputString}: {epsilonNFA.Accepts(inputString)}");
-                 Assert.Equal(epsilonNFA.Accepts(inputString), accepted);
+                // Console.WriteLine($"{inputString}: {epsilonNFA.Accepts(inputString)}");
+                Assert.Equal(epsilonNFA.Accepts(inputString), accepted);
             }
 
 
@@ -175,7 +175,7 @@ namespace FormalLanguageLibraryTests.Automata
 
             foreach (var (inputString, accepted) in inputs)
             {
-                Console.WriteLine($"{inputString}: {epsilonNFA.Accepts(inputString)}");
+                // Console.WriteLine($"{inputString}: {epsilonNFA.Accepts(inputString)}");
                 Assert.Equal(epsilonNFA.Accepts(inputString), accepted);
             }
         }
@@ -185,7 +185,7 @@ namespace FormalLanguageLibraryTests.Automata
         {
             //Arrange
             char[] inputAlphabet = { '0', '1' };
-            string[] states = { "q0", "q1", "q2", "q3","q4" };
+            string[] states = { "q0", "q1", "q2", "q3", "q4" };
             string initialState = "q0";
             string[] finalStates = { "q1" };
             TransitionFunction<char, string> transitionFunction = new();
@@ -226,7 +226,7 @@ namespace FormalLanguageLibraryTests.Automata
             var C = new State<string>("C");
 
             //Arrange
-            var inputAlphabet = new HashSet<Symbol<char>>{ s0, s1 };
+            var inputAlphabet = new HashSet<Symbol<char>> { s0, s1 };
             var states = new HashSet<State<string>> { A, B, C };
             var initialState = A;
             var finalStates = new HashSet<State<string>> { C };
