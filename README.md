@@ -5,4 +5,4 @@ Automata &amp; Grammars C# Library
 Navigate to [HowToUse.md](/HowToUse.md)
 
 ## Programmer Specification
-Navigate to [Specification.md](/Specification.md)
+Navigate to [ProgrammerDocumentation.md](/ProgrammerDocumentation.md)
